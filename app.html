@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#1E4C52">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Eduvos Map">
+<title>Eduvos Campus Explorer</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="gl"></canvas>
+  <div id="hotspots"></div>
+  <div id="fade"></div>
 
+  <header id="top">
+    <div class="brand"><i></i><span>Eduvos Campus</span></div>
+    <button class="ibtn" id="autoBtn" aria-label="Auto-rotate">⟳</button>
+    <button class="ibtn" id="fsBtn" aria-label="Full screen">⛶</button>
+  </header>
+
+  <div id="info">
+    <div id="compass"><span>N</span><div id="needle"></div></div>
+    <div class="txt"><h2 id="iName">–</h2><p id="iDesc"></p></div>
+  </div>
+
+  <div id="zoom"><button class="ibtn" id="zi">+</button><button class="ibtn" id="zo">–</button></div>
+
+  <!-- bottom sheet -->
+  <section id="sheet" class="peek">
+    <button id="grab" aria-label="Expand panel"><span></span></button>
+    <nav id="tabs">
+      <button class="tab on" data-t="map">Map</button>
+      <button class="tab" data-t="places">Places</button>
+      <button class="tab" data-t="dir">Directions</button>
+    </nav>
+    <div id="panes">
+      <div class="pane on" id="p-map">
+        <div id="mapWrap"><div id="mapInner"><img id="mapImg" src="assets/map.webp" alt="Campus aerial map" draggable="false"><svg id="mapSvg" viewBox="0 0 1042 748"></svg></div></div>
+        <p class="hint">Drag to pan, pinch to zoom, tap a pin to go there.</p>
+      </div>
+      <div class="pane" id="p-places">
+        <input type="search" id="q" placeholder="Search places…">
+        <div id="list"></div>
+      </div>
+      <div class="pane" id="p-dir">
+        <label class="lbl">From<select id="from"></select></label>
+        <label class="lbl">To<select id="to"></select></label>
+        <div class="row"><button class="pbtn alt" id="swap">⇅ Swap</button><button class="pbtn" id="findBtn">Find route</button></div>
+        <div id="routeOut"><div class="empty">Choose a start and destination, then tap “Find route”.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="toast"></div>
+  <div id="welcome" class="modal"><div class="card">
+    <h2>Welcome to Eduvos Campus</h2>
+    <ul><li>Drag to look around, pinch to zoom.</li><li>Tap the arrows to walk to the next spot.</li><li>Use <b>Directions</b> for a guided walk.</li></ul>
+    <button class="pbtn go" id="startBtn">Start exploring</button>
+  </div></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
