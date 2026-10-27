@@ -227,4 +227,4 @@ addEventListener('resize',()=>{applyMap();});
 
 if(!gl){document.body.innerHTML='<p style="color:#fff;padding:24px">Sorry, your browser does not support WebGL, which is needed for the 360° viewer.</p>';}
 renderList();drawMap();updateInfo();frame();goTo(cur);
-if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('support.js').catch(()=>{});
